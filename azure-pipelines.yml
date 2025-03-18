@@ -18,7 +18,8 @@ steps:
     ls -R  # Lista todos os arquivos no repositório
 - script: |
     echo "Procurando pom.xml no repositório clonado..."
-    find $(Build.SourcesDirectory) -name "pom.xml"  # Busca dentro do repositório clonado
+    find / -name pom.xml  # Busca dentro do repositório clonado
+  displayName: 'Procurando POM'
 - task: Maven@4
   inputs:
     mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'  # Ajuste para o caminho correto
