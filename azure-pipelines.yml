@@ -5,7 +5,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: Veracodepractice # the name that we gave to the self hosted pool
 
 variables:
   veracodeAppProfile: AzDevOps.$(Build.DefinitionName)
