@@ -13,6 +13,10 @@ variables:
 
 steps:
 - checkout: self
+- script: |
+    echo "Listando arquivos no diretório:"
+    ls -R  # Lista todos os arquivos no repositório
+  displayName: 'Listar Arquivos'
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
