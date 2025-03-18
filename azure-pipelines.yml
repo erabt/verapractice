@@ -12,7 +12,6 @@ variables:
   caminhoPacote: target/verademo.war
 
 steps:
-- checkout: self
 - script: |
     echo "Listando arquivos no diretório:"
     ls -R  # Lista todos os arquivos no repositório
