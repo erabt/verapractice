@@ -16,15 +16,17 @@ steps:
 - script: |
     echo "Listando arquivos no diretório:"
     ls -R  # Lista todos os arquivos no repositório
-- script: |
-    echo "Procurando pom.xml no repositório clonado..."
-    find / -name pom.xml  # Busca dentro do repositório clonado
-  displayName: 'Procurando POM'
 - task: Maven@4
   inputs:
-    mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'  # Ajuste para o caminho correto
-    goals: 'clean install'
-  
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
+
 - script: |
     curl -O -L https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
   displayName: 'Download Pipeline Scanner'
